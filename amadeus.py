@@ -189,8 +189,8 @@ def wait(bot, update, botname, username, new):
                 cache = None
                 qcache = None
                 user = ""
-                username = 'thewickedkarma'
-                botname = 'Makise Kurisu'
+                username = 'kawsar'
+                botname = 'Karen'
                 update.message.reply_text('Timer has run down, bot has been reset to defaults.')
                 running = False
     else:
@@ -220,10 +220,10 @@ def ask(username, botname, question, chat_log=None):
     t = '[' + ampm + '] '
     prompt = f'{chat_log}{t}{username}: {question}\n{t}{botname}:'
     response = completion.create(
-        prompt=prompt, engine="text-davinci-001", stop=['\n'], temperature=0.9,
+        prompt=prompt, engine="text-davinci-002", stop=['\n'], temperature=0.9,
         top_p=1, frequency_penalty=0, presence_penalty=0.6, best_of=3,
         max_tokens=250)
-    answer = response.choices[0].text.strip()
+    answer = response.choices[0].text
     return answer
     # fp = 15 pp= 1 top_p = 1 temp = 0.9
 
