@@ -206,7 +206,7 @@ def limit(text, max):
         inv = max * -1
         print("Reducing length of chat history... This can be a bit buggy.")
         nl = text[inv:]
-        text = re.search(r'(?<=\n)[\s\S]*', nl).group(0)
+    ##  text = re.search(r'(?<=\n)[\s\S]*', nl).group(0)
         return text
     else:
         return text
