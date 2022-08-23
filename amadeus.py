@@ -225,7 +225,7 @@ def ask(username, botname, question, chat_log=None):
         top_p=1.0, frequency_penalty=0.0, presence_penalty=0.0, best_of=1,
         max_tokens=250)
     answer = response.choices[0].text
-    return response
+    return answer
     # fp = 15 pp= 1 top_p = 1 temp = 0.9
 
 def append_interaction_to_chat_log(username, botname, question, answer, chat_log=None):
