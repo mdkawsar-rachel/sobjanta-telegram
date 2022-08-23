@@ -7,7 +7,7 @@ import openai
 #OpenAI API key
 aienv = os.getenv('OPENAI_KEY')
 if aienv == None:
-    openai.api_key = "Open AI Key"
+    openai.api_key = "OpenAI API"
 else:
     openai.api_key = aienv
 print(aienv)
@@ -15,7 +15,7 @@ print(aienv)
 #Telegram bot key
 tgenv = os.getenv('TELEGRAM_KEY')
 if tgenv == None:
-    tgkey = "Telegram Key"
+    tgkey = "Telgram API"
 else:
     tgkey = tgenv
 print(tgenv)
@@ -189,8 +189,8 @@ def wait(bot, update, botname, username, new):
                 cache = None
                 qcache = None
                 user = ""
-                username = 'kawsar'
-                botname = 'Karen'
+                username = 'thewickedkarma'
+                botname = 'Makise Kurisu'
                 update.message.reply_text('Timer has run down, bot has been reset to defaults.')
                 running = False
     else:
@@ -202,13 +202,13 @@ def wait(bot, update, botname, username, new):
 #Main functions#
 ################
 def limit(text, max):
-    ##if (len(text) >= max):
-    ##    inv = max * -1
-    ##    print("Reducing length of chat history... This can be a bit buggy.")
-    ##  nl = text[inv:]
-    ##  text = re.search(r'(?<=\n)[\s\S]*', nl).group(0)
-    ##    return text
-    ## else:
+    if (len(text) >= max):
+        inv = max * -1
+        print("Reducing length of chat history... This can be a bit buggy.")
+        nl = text[inv:]
+        text = re.search(r'(?<=\n)[\s\S]*', nl).group(0)
+        return text
+    else:
         return text
 
 
@@ -218,13 +218,12 @@ def ask(username, botname, question, chat_log=None):
     now = datetime.now()
     ampm = now.strftime("%I:%M %p")
     t = '[' + ampm + '] '
-  #  prompt = f'{chat_log}{t}{username}: {question}\n{t}{botname}:'
-    prompt = f'{question}'
+    prompt = f'{chat_log}{t}{username}: {question}\n{t}{botname}:'
     response = completion.create(
-        prompt=prompt, engine="text-davinci-002", temperature=0.3,
-        top_p=1.0, frequency_penalty=0.0, presence_penalty=0.0, best_of=1,
+        prompt=prompt, engine="text-davinci-001", stop=['\n'], temperature=0.9,
+        top_p=1, frequency_penalty=0, presence_penalty=0.6, best_of=3,
         max_tokens=250)
-    answer = response.choices[0].text
+    answer = response.choices[0].text.strip()
     return answer
     # fp = 15 pp= 1 top_p = 1 temp = 0.9
 
