@@ -219,7 +219,7 @@ def ask(username, botname, question, chat_log=None):
     ampm = now.strftime("%I:%M %p")
     t = '[' + ampm + '] '
   #  prompt = f'{chat_log}{t}{username}: {question}\n{t}{botname}:'
-    prompt = question
+    prompt = f'{question}'
     response = completion.create(
         prompt=prompt, engine="text-davinci-002", temperature=0.3,
         top_p=1.0, frequency_penalty=0.0, presence_penalty=0.0, best_of=1,
