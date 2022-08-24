@@ -219,12 +219,22 @@ def ask(username, botname, question, chat_log=None):
     ampm = now.strftime("%I:%M %p")
     t = '[' + ampm + '] '
     prompt = f'{chat_log}{t}{username}: {question}\n{t}{botname}:'
-    response = completion.create(
-        prompt=prompt, engine="text-davinci-002", stop=['\n'], temperature=0.3,
-        top_p=1, frequency_penalty=0, presence_penalty=0, best_of=1,
-        max_tokens=250)
-    answer = response.choices[0].text.strip()
-    return answer
+   # response = completion.create(
+   #     prompt=prompt, engine="text-davinci-002", stop=['\n'], temperature=0.3,
+   #     top_p=1, frequency_penalty=0, presence_penalty=0, best_of=1,
+   #     max_tokens=250)
+   # answer = response.choices[0].text.strip()
+   # return answer
+    response = openai.Completion.create(
+        model="text-davinci-002",
+        prompt=prompt,
+        temperature=0.3,
+        max_tokens=150,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
+        )
+    return response
     # fp = 15 pp= 1 top_p = 1 temp = 0.9
 
 def append_interaction_to_chat_log(username, botname, question, answer, chat_log=None):
