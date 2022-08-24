@@ -234,7 +234,7 @@ def ask(username, botname, question, chat_log=None):
         frequency_penalty=0,
         presence_penalty=0
         )
-    answer = response.data.choices[0].text
+    answer = response.choices[0].text
     return answer
     # fp = 15 pp= 1 top_p = 1 temp = 0.9
 
